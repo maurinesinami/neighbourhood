@@ -11,16 +11,17 @@
        {% for community in communities %}
 
 
-       <div class="col-md-4">
+       <div class="col-md-6">
            <div class="card mb-2">
-               <!-- {% if business_item.business_image %}
-               <img class="card-img-top" src="{{community.location}}"
-                   height="auto" width="200px !important">
+               
+               <img class="card-img-top" src="{{community.image.url}}"
+                   height="400px" width="550px !important">
 
-               {% endif %} -->
+               
                <div class="card-body">
                    <h5 class="card-title">CREATED BY:{{community.created_by }} </h5>
-                   <p class="card-text"><h4>{{ community.location }}</h4></p>
+                   
+                   <p class="card-text"><h4>LOCATION:{{ community.location }}</h4></p>
                    
                    <h2 class="text-center"> </h2>
                </div>
