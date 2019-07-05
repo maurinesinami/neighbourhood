@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Community
+from .models import Community,Post,Profile
 from django.contrib.auth.decorators import login_required
-from . forms import CommunityForm
+from . forms import CommunityForm,PostForm
 from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def welcome(request):
@@ -28,7 +28,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.profile=current_user
             post.save()
-        return redirect('welcome')
+        return redirect('post ')
 
     else:
         form = PostForm()

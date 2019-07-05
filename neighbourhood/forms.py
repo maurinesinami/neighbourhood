@@ -4,10 +4,10 @@ class CommunityForm(forms.ModelForm):
     class Meta:
         model = Community
         exclude = ['name']
-class PostsForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post 
-        exclude = ['']
+        exclude = ['profile']
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
