@@ -7,7 +7,7 @@ class CommunityForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post 
-        exclude = ['profile']
+        exclude = ['profile','neighbourhood']
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

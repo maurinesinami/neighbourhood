@@ -4,6 +4,8 @@ from .models import Community,Post,Profile
 from django.contrib.auth.decorators import login_required
 from . forms import CommunityForm,PostForm
 from django.contrib.auth.models import User
+
+
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     communities = Community.objects.all()
@@ -28,7 +30,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.profile=current_user
             post.save()
-        return redirect('post ')
+        return redirect('post')
 
     else:
         form = PostForm()
@@ -36,4 +38,4 @@ def new_post(request):
     
 def post(request):
     posts = Post.objects.all()
-    return render(request,'index.html',{"posts":posts})
+    return render(request,'post.html',{"posts":posts})

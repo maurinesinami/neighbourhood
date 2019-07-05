@@ -9,7 +9,7 @@ class Community(models.Model):
     police_dpt = models.CharField(max_length=50)
 
     def __str__(self):
-        return location
+        return self.name_of_neighbourhood
 class Profile(models.Model):
     profile_photo= models.ImageField(upload_to = 'dp/')
     location= models.CharField(max_length=50)
@@ -23,5 +23,5 @@ class Post(models.Model):
     profile = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     neighbourhood=models.ForeignKey(Community,on_delete=models.CASCADE, null=True)
     def __str__(self):
-        return self.image
+        return self.img
        
