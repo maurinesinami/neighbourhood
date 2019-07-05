@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^new/community',views.new_community,name='new-community'),
     url(r'^new/post$', views.new_post, name='new-post'),
     url(r'^post$', views.post, name='post'),
+    url(r'^profile/$',views.profile,name='profile'),
     url(r'^new/profile/(\d+)$', views.new_profile, name='new-profile'),    
 ]
 if settings.DEBUG:
