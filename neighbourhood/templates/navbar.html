@@ -30,6 +30,12 @@
                 <a href="{%url 'new-post' %}">post</a>
               </li>
               <li>
+                <a class="dropdown-item" href="{% url 'new-profile' user.id %}">Create Profile</a> 
+                </li>
+                <li>  
+                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a> 
+                </li>
+              <li>
                 <a href="/accounts/password/change">Change Password</a>
               </li>
               <li>

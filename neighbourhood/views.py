@@ -52,7 +52,7 @@ def new_profile(request,id):
     else:
         form = ProfileForm()
     return render(request, 'new-profile.html', {"form":form,"user":user})
-    def profile(request):
+def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     
