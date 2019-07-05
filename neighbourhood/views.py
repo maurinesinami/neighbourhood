@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Community
 from django.contrib.auth.decorators import login_required
 from . forms import CommunityForm
+from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     communities = Community.objects.all()
@@ -19,3 +20,16 @@ def new_community(request):
     else:
         form = CommunityForm()
     return render(request, 'new_community.html', {"form": form})
+def new_post(request):    
+current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.profile=current_user
+            post.save()
+        return redirect('welcome')
+
+    else:
+        form = PostForm()
+    return render(request, 'new-post.html', {"form": form})

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 class Community(models.Model):
     image = models.ImageField(upload_to = 'jirani/')
     name_of_neighbourhood = models.CharField(max_length=55)
@@ -19,8 +19,9 @@ class Profile(models.Model):
 
 class Post(models.Model):
     img = models.ImageField(upload_to = 'posts/')
+    img_caption = models.CharField(max_length=50)
     profile = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 
-     def __str__(self):
+    def __str__(self):
         return self.img
        
