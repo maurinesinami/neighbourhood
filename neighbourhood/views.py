@@ -21,7 +21,7 @@ def new_community(request):
         form = CommunityForm()
     return render(request, 'new_community.html', {"form": form})
 def new_post(request):    
-current_user = request.user
+    current_user = request.user
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -33,3 +33,7 @@ current_user = request.user
     else:
         form = PostForm()
     return render(request, 'new-post.html', {"form": form})
+    
+def post(request):
+    posts = Post.objects.all()
+    return render(request,'index.html',{"posts":posts})
