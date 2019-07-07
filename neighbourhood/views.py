@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Community,Post,Profile
+from .models import Community,Post,Profile,Business
 from django.contrib.auth.decorators import login_required
-from . forms import CommunityForm,PostForm,ProfileForm
+from . forms import CommunityForm,PostForm,ProfileForm,BusinessForm
 from django.contrib.auth.models import User
 
 
@@ -57,3 +57,15 @@ def profile(request):
     profile = Profile.objects.get(user=current_user)
     
     return render(request, 'profile-page.html',{"profile":profile})
+def new_business(request,id):
+    user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = user
+            profile.save()
+        return redirect('post')
+    else:
+        form = BusinessForm()
+    return render(request, 'new-business.html', {"form":form,"user":user})

@@ -10,7 +10,8 @@ urlpatterns=[
     url(r'^new/post$', views.new_post, name='new-post'),
     url(r'^post$', views.post, name='post'),
     url(r'^profile/$',views.profile,name='profile'),
-    url(r'^new/profile/(\d+)$', views.new_profile, name='new-profile'),    
+    url(r'^new/profile/(\d+)$', views.new_profile, name='new-profile'), 
+     url(r'^new/business/(\d+)$', views.new_business, name='new-business'),           
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
