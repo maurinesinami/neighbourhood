@@ -10,22 +10,23 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{% url 'welcome' %}">My Neighbourhood</a>
-      <a class="navbar-brand" href="{% url 'new-community' %}">create community</a>
+     
+      <a class="navbar-brand" href="{% url 'business'  %}">Businesses</a>
+      <a class="navbar-brand" href="{% url 'left'  %}">Leave Community</a>
       
-      
+      <a class="navbar-brand" href="{% url 'new-profile' user.id %}">Edit profile</a>
+      <a class="navbar-brand" href="{% url 'profile' %}"> Profile</a>
     </div>
   </div>
-  <div class="col-sm-6 col-md-6">
+  <div class="col-sm-6 col-md-6" >
         {% if user.is_authenticated %}
         <ul>
-          <li class="dropdown">
+          <li class="dropdown" style = "float:left;">
             <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
                       <span class="caret"></span>
                   </a>
             <ul class="dropdown-menu" role="menu">
-              
-             
-            
+
               <li>
                 <a href="/accounts/password/change">Change Password</a>
               </li>

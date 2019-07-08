@@ -19,8 +19,8 @@ class Profile(models.Model):
         return self.neighbourhood_name
 
 class Post(models.Model):
-    img = models.ImageField(upload_to = 'posts/' ,null=True)
-    text= models.CharField(max_length=50)
+    img = models.ImageField(upload_to = 'posts/' , blank=True)
+    text= models.CharField(max_length=500)
     profile = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     neighbourhood=models.ForeignKey(Community,on_delete=models.CASCADE, null=True)
     def __str__(self):
@@ -28,7 +28,11 @@ class Post(models.Model):
 class Business(models.Model):
     bn_name = models.CharField(max_length=64, unique= True)
     bn_user = models.ForeignKey(User,on_delete=models.CASCADE)
-    bn_community = models.ForeignKey(Community, null=True)
+    bn_community = models.ForeignKey(Community)
     bn_email = models.EmailField(max_length=64, unique= True) 
     def __str__(self):
         return self.bn_name  
+    @classmethod
+    def search_by_business(cls,search_term):
+        business = cls.objects.filter(business__icontains=search_term)
+        return business    

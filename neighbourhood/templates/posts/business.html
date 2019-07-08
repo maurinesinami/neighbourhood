@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{%extends 'posts/base2.html'%}
 {% load bootstrap3 %}
 {% block content %}
 
@@ -10,30 +10,33 @@
 <div class="container">
 
    <div class="row">
-       <h1>posts</h1>
-    {% for post in posts %}
+       
+    {% for business in business %}
 
        <div class="col-md-6">
            <div class="card mb-2">
                
-               <img class="card-img-top" src="{{post.img.url}}"
-                   height="400px" width="550px !important">
+               
 
                
                <div class="card-body">
-                   <h5 class="card-title">{{post.text }} </h5>
-                   
-                
+                   <h5 class="card-title">{{business.bn_name }} </h5>
+                   {{business.bn_email}}
+                {{business.bn_user}}
+                {{business.bn_community}}
                    
                    <h2 class="text-center"> </h2>
                </div>
            </div>
        </div>
-
-
        {% empty %}
+       
+       
    </div>
    {% endfor %}
+
+
+  
 </div>
 
 
