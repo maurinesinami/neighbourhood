@@ -41,9 +41,9 @@ def new_post(request,id):
 def post(request,id):
     posts = Post.objects.filter(neighbourhood=id)
     community=Community.objects.get(id=id)
-    business = Business.objects.filter(bn_community=id)
     
-    return render(request,'posts/post.html',{"posts":posts,"business":business,'community':community})
+    
+    return render(request,'posts/post.html',{"posts":posts,'community':community})
 
 @login_required(login_url='/accounts/login/')      
 def new_profile(request,id):
@@ -69,18 +69,22 @@ def new_business(request,id):
     user_community = Community.objects.get(id=id)
     if request.method == 'POST':
         form = BusinessForm(request.POST, request.FILES)
+        
         if form.is_valid():
+            
             business = form.save(commit=False)
             business.user = user
             business.bn_community = user_community
             business.save()
-        return redirect('business')
+            
+        return redirect('business',id)
     else:
         form = BusinessForm()
     return render(request, 'posts/new-business.html', {"form":form,"user":user,'community':user_community})
-def business(request):
-    business = Business.objects.all()
-    return render(request,'posts/business.html',{"business":business})    
+def business(request,id):
+    business = Business.objects.filter(bn_community=id)
+    community=Community.objects.get(id=id)
+    return render(request,'posts/business.html',{"business":business,'community':community})    
 def search_results(request):
 
     if 'businesses' in request.GET and request.GET["businesses"]:

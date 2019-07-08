@@ -3,33 +3,30 @@
 {% block content %}
 
 {{block.super}}
-
-<div class="row">
    
-</div>
+
 <div class="container">
 
    <div class="row">
-       
+    <div class="col-md-4">
     {% for business in business %}
 
-       <div class="col-md-6">
-           <div class="card mb-2">
-               
+       
+           
+            {{business.bn_user}}
                
 
                
-               <div class="card-body">
-                   <h5 class="card-title">{{business.bn_name }} </h5>
-                   {{business.bn_email}}
-                {{business.bn_user}}
-                {{business.bn_community}}
+              
+                   <h5>{{business.bn_name }} </h5>
+                  <p> {{business.bn_email}}</p>
+                
+                <p>{{business.bn_community}}</p>
                    
-                   <h2 class="text-center"> </h2>
+                  
                </div>
            </div>
-       </div>
-       {% empty %}
+              {% empty %}
        
        
    </div>

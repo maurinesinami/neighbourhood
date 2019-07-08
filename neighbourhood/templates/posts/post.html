@@ -10,6 +10,7 @@
 <div class="container">
     <a class="btn btn-primary" href="{% url 'new-business' community.id  %}">create business</a>
     <a class="btn btn-primary" href="{% url 'new-post' community.id  %}">New Post</a>
+    <a class="btn btn-primary" href="{% url 'business' community.id  %}">Businesses</a>
    <div class="row">
        <h1>posts</h1>
     {% for post in posts %}

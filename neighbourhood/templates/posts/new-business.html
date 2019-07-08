@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+{% block content %}
   <form  action="{%url 'new-business' community.id %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
@@ -26,7 +26,7 @@
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
-
+{% endblock%}
 </body>
 
 </html>

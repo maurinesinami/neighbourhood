@@ -12,7 +12,7 @@ urlpatterns=[
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^new/profile/(\d+)$', views.new_profile, name='new-profile'), 
     url(r'^new/business/(\d+)$', views.new_business, name='new-business'),
-    url(r'^business$', views.business, name='business'), 
+    url(r'^business/(\d+)$', views.business, name='business'), 
     url(r'^search/', views.search_results, name='search_results')  , 
     url(r'^leave/hood$', views.leave_hood, name='left')       
 ]

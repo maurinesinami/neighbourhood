@@ -27,7 +27,7 @@ class Post(models.Model):
         return self.img
 class Business(models.Model):
     bn_name = models.CharField(max_length=64, unique= True)
-    bn_user = models.ForeignKey(User,on_delete=models.CASCADE)
+    bn_user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     bn_community = models.ForeignKey(Community)
     bn_email = models.EmailField(max_length=64, unique= True) 
     def __str__(self):
